@@ -1,0 +1,52 @@
+package app.backend.models;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.List;
+
+@Entity
+@Table(name = "orders")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Order {
+
+    @Id
+    private Integer id;
+
+    @Column(name = "order_code", nullable = false, unique = true)
+    private String orderCode;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Account customer;
+
+    @Column(name = "shipping_address", nullable = false)
+    private String shippingAddress;
+
+    @Column(name = "payment_method", nullable = false)
+    private String paymentMethod;
+
+    @Column(name = "payment_status", nullable = false)
+    private String paymentStatus;
+
+    @Column(nullable = false)
+    private String status;
+
+    @Column(name = "total_amount", nullable = false)
+    private BigDecimal totalAmount;
+
+    @Column(name = "created_at")
+    private Timestamp createdAt;
+
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> orderItems;
+
+    @OneToMany(mappedBy = "order")
+    private List<Payment> payments;
+}
