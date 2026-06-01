@@ -24,7 +24,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Account customer;
+    private User customer;
 
     @Column(name = "shipping_address", nullable = false)
     private String shippingAddress;
