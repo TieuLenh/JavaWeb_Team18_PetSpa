@@ -23,7 +23,7 @@ public class ProductReview {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Account customer;
+    private User customer;
 
     @Column(nullable = false)
     private Integer rating;
