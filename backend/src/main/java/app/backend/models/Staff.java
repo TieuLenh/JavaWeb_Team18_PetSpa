@@ -23,8 +23,8 @@ public class Staff {
     private Integer id;
 
     @OneToOne
-    @JoinColumn(name = "account_id", unique = true)
-    private Account account;
+    @JoinColumn(name = "user_id", unique = true)
+    private User user;
 
     @Column(name = "full_name", nullable = false)
     private String fullName;
@@ -76,7 +76,4 @@ public class Staff {
 
     @OneToMany(mappedBy = "groomer")
     private List<Booking> bookings;
-
-    @OneToMany(mappedBy = "groomer")
-    private List<TimeSlot> timeSlots;
 }

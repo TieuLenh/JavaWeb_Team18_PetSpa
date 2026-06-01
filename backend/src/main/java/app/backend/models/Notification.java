@@ -19,7 +19,7 @@ public class Notification {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Account user;
+    private User user;
 
     @Column(nullable = false, length = 255)
     private String title;

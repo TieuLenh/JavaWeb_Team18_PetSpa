@@ -21,7 +21,7 @@ public class Cart {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private Account user;
+    private User user;
 
     @Column(name = "total_items")
     private Integer totalItems;

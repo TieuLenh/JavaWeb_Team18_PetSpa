@@ -24,7 +24,7 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Account customer;
+    private User customer;
 
     @ManyToOne
     @JoinColumn(name = "pet_id")
@@ -67,9 +67,6 @@ public class Booking {
         inverseJoinColumns = @JoinColumn(name = "service_id")
     )
     private Set<Service> services;
-
-    @OneToMany(mappedBy = "booking")
-    private List<TimeSlot> timeSlots;
 
     @OneToMany(mappedBy = "booking")
     private List<Payment> payments;
