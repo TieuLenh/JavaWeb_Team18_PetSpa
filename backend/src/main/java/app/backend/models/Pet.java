@@ -23,7 +23,7 @@ public class Pet {
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
-    private Account owner;
+    private User owner;
 
     @ManyToOne
     @JoinColumn(name = "species_id")
