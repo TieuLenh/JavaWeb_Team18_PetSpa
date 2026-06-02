@@ -13,21 +13,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Category {
+public class ServCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
-    private Long categoryId;
+    private Long id;
 
     @Column(nullable = false, unique = true, length = 100)
     private String name;
 
     @Column(columnDefinition = "TEXT")
     private String description;
-
-    @Column(name = "image_url")
-    private String imageUrl;
 
     @Builder.Default
     @Column(name = "is_active")
@@ -37,8 +33,5 @@ public class Category {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "category")
-    private List<Product> products;
-
-    @OneToMany(mappedBy = "category")
-    private List<Service> services;
+    private List<ServEntity> services;
 }

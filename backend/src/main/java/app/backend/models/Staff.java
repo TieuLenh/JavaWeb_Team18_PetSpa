@@ -8,7 +8,6 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "staffs")
@@ -17,10 +16,11 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Staff {
+public class Staff extends BaseEntity {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "user_id", unique = true)
@@ -60,20 +60,6 @@ public class Staff {
     @Column(name = "working_end")
     private LocalTime workingEnd;
 
-    @Column(name = "created_at")
-    private Timestamp createdAt;
-
-    @Column(name = "updated_at")
-    private Timestamp updatedAt;
-
-    @ElementCollection
-    @CollectionTable(
-        name = "staff_specialties",
-        joinColumns = @JoinColumn(name = "staff_id")
-    )
-    @Column(name = "specialty_name")
-    private Set<String> specialties;
-
-    @OneToMany(mappedBy = "groomer")
+    @OneToMany(mappedBy = "staff")
     private List<Booking> bookings;
 }

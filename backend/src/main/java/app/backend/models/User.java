@@ -18,7 +18,8 @@ import app.backend.enums.UserStatus;
 public class User extends BaseEntity { // ke thua base entity de co create_at va update_at
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     @Column(length = 20)
     private UserStatus status;

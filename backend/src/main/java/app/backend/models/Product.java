@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+
 import java.util.List;
 import java.util.Set;
 
@@ -15,14 +15,10 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Product {
-
+public class Product extends BaseEntity {
     @Id
-    private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false, length = 255)
     private String name;
@@ -46,12 +42,6 @@ public class Product {
 
     @Column(nullable = false, length = 30)
     private String status;
-
-    @Column(name = "created_at")
-    private Timestamp createdAt;
-
-    @Column(name = "updated_at")
-    private Timestamp updatedAt;
 
     @ElementCollection
     @CollectionTable(

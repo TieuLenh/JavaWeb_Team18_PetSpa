@@ -16,7 +16,8 @@ import java.sql.Timestamp;
 public class CartItem {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "cart_id")

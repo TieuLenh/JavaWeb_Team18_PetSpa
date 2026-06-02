@@ -14,8 +14,7 @@ public class PetImg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pet_image_id")
-    private Long petImageId;
+    private Long id;
 
     @Column(name = "image_url", nullable = false)
     private String imageUrl;

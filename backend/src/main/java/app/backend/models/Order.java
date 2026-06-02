@@ -17,10 +17,8 @@ import java.util.List;
 public class Order {
 
     @Id
-    private Integer id;
-
-    @Column(name = "order_code", nullable = false, unique = true)
-    private String orderCode;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")

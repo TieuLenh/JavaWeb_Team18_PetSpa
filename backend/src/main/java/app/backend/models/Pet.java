@@ -19,7 +19,8 @@ import java.util.Set;
 public class Pet {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")

@@ -15,18 +15,20 @@ import java.sql.Timestamp;
 public class ServiceReview {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "service_id")
-    private Service service;
+    private ServEntity service;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private User customer;
 
     @Column(nullable = false)
-    private Integer rating;
+
+    private Integer start;
 
     @Column(columnDefinition = "TEXT")
     private String comment;

@@ -8,7 +8,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "bookings")
@@ -20,7 +21,9 @@ import java.util.Set;
 public class Booking {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -31,8 +34,8 @@ public class Booking {
     private Pet pet;
 
     @ManyToOne
-    @JoinColumn(name = "groomer_id")
-    private Staff groomer;
+    @JoinColumn(name = "staff_id")
+    private Staff staff;
 
     @Column(name = "booking_date", nullable = false)
     private LocalDate bookingDate;
@@ -60,22 +63,19 @@ public class Booking {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @ManyToMany
-    @JoinTable(
-        name = "booking_services",
-        joinColumns = @JoinColumn(name = "booking_id"),
-        inverseJoinColumns = @JoinColumn(name = "service_id")
-    )
-    private Set<Service> services;
+    @OneToMany(mappedBy = "booking")
+    @JsonIgnore
+    private List<BookingBill> BookingServs;
 
     @OneToMany(mappedBy = "booking")
+    @JsonIgnore
     private List<Payment> payments;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

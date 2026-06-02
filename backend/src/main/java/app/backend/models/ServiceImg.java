@@ -14,8 +14,7 @@ public class ServiceImg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "service_image_id")
-    private Long serviceImageId;
+    private Long id;
 
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
@@ -26,5 +25,5 @@ public class ServiceImg {
 
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)
-    private Service service;
+    private ServEntity service;
 }

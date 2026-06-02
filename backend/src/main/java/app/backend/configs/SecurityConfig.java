@@ -31,15 +31,15 @@ public class SecurityConfig {
 
         http
             .csrf(csrf -> csrf.disable())
-            // .cors(cors -> {})
-            .cors(cors -> cors.configurationSource(request -> {
-                CorsConfiguration config = new CorsConfiguration();
-                config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-                config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
-                config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
-                config.setAllowCredentials(true); 
-                return config; // phan nay toi them vao giong nghiep vu cua CorsConfig co le phai xem lai sau
-            }))
+            .cors(cors -> {})
+            // .cors(cors -> cors.configurationSource(request -> {
+            //     CorsConfiguration config = new CorsConfiguration();
+            //     config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+            //     config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+            //     config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+            //     config.setAllowCredentials(true); 
+            //     return config; // phan nay toi them vao giong nghiep vu cua CorsConfig co le phai xem lai sau
+            // }))
             .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/**").permitAll() // co the custom cho nay de gioi han quyen truy cap api

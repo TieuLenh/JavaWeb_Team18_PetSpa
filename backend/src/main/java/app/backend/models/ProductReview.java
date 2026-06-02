@@ -15,7 +15,8 @@ import java.sql.Timestamp;
 public class ProductReview {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "product_id")

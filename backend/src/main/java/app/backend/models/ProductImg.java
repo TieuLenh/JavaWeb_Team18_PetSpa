@@ -14,8 +14,7 @@ public class ProductImg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_image_id")
-    private Long productImageId;
+    private Long id;
 
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
