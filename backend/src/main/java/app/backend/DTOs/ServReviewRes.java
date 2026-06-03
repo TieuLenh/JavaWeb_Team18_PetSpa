@@ -3,18 +3,24 @@ package app.backend.DTOs;
 import app.backend.models.ServiceReview;
 import lombok.Getter;
 
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @Getter
 public class ServReviewRes {
-    private Long id;
     private String customerName;
-    private Integer start;
+    private Integer star;
     private String comment;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate createDate;
+
     public ServReviewRes(ServiceReview serviceReview){
-        this.id = serviceReview.getId();
         this.customerName = serviceReview.getCustomer().getUsername();
-        this.start = serviceReview.getStart();
+        this.star = serviceReview.getStars();
         this.comment = serviceReview.getComment();
+        this.createDate = serviceReview.getCreatedAt() != null ? serviceReview.getCreatedAt().toLocalDate() : null;
     }
 }

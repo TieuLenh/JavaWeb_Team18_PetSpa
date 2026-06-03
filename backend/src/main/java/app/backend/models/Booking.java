@@ -3,8 +3,8 @@ package app.backend.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.math.BigDecimal;
 import java.util.List;
@@ -61,7 +61,7 @@ public class Booking {
     private String note;
 
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "booking")
     @JsonIgnore

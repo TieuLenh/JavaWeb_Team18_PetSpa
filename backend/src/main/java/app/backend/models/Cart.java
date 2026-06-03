@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
@@ -14,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Cart {
+public class Cart extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,12 +28,6 @@ public class Cart {
 
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
-
-    @Column(name = "created_at")
-    private Timestamp createdAt;
-
-    @Column(name = "updated_at")
-    private Timestamp updatedAt;
 
     @OneToMany(mappedBy = "cart")
     private List<CartItem> cartItems;

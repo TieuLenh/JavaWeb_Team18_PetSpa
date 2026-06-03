@@ -3,7 +3,7 @@ package app.backend.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "notifications")
@@ -39,5 +39,5 @@ public class Notification {
     private Integer referenceId;
 
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 }

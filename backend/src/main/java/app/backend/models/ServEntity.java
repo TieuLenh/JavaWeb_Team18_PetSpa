@@ -39,16 +39,13 @@ public class ServEntity extends BaseEntity{
     @Column(nullable = false)
     private BigDecimal price;
 
-    @Column(name = "booking_count")
-    private Integer bookingCount;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private ServStatus status;
 
     @OneToMany(mappedBy = "service")
     @JsonIgnore
-    private List<BookingBill> BookingServs;
+    private List<BookingBill> BookingBills;
 
     @OneToMany(mappedBy = "service")
     private List<ServiceReview> serviceReviews;

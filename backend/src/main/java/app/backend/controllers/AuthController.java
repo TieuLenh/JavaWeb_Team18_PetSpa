@@ -74,7 +74,7 @@ public class AuthController {
             LoginRes loginData = new LoginRes(User, token); 
             return ResponseEntity.ok(new Response<LoginRes>(true, "Đăng ký thành công!", loginData));
         }
-        return ResponseEntity.badRequest().body(new Response<>(false, "Email already in use!", null));
+        return ResponseEntity.badRequest().body(new Response<>(false, "Email already in used!", null));
     }
 
     // 3. API LẤY THÔNG TIN TÀI KHOẢN (Đã hoàn thiện)

@@ -3,7 +3,7 @@ package app.backend.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "product_reviews")
@@ -33,5 +33,5 @@ public class ProductReview {
     private String comment;
 
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 }

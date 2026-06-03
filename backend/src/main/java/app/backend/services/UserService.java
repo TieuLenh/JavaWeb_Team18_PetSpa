@@ -29,6 +29,8 @@ public class UserService {
     // LOGIC ĐĂNG KÝ
     // =========================
     public User register(String email, String password) {
+        
+
         if (userRepo.existsByEmail(email)) {
             return null;
         }

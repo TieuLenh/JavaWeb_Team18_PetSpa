@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Pet {
+public class Pet extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,12 +61,6 @@ public class Pet {
     private String note;
 
     private String status;
-
-    @Column(name = "created_at")
-    private Timestamp createdAt;
-
-    @Column(name = "updated_at")
-    private Timestamp updatedAt;
 
     @ElementCollection
     @CollectionTable(

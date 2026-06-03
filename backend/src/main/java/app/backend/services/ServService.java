@@ -18,6 +18,8 @@ public class ServService {
         return serviceRepo.findAllEnable();
     }
     
-
+    public ServEntity getEnableServById(Long id){
+        return serviceRepo.findByIdAndEnable(id);
+    }
     
 }
